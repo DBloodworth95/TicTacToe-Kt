@@ -4,9 +4,14 @@ import java.io.IOException
 import java.net.ServerSocket
 
 class Server(private val port: Int) : Thread() {
-    var handlers: MutableList<ClientHandler> = mutableListOf()
+    private val handlers: MutableList<ClientHandler> = mutableListOf()
 
-    var gameBoard = Board()
+    private val gameBoard = Board()
+
+    val getHandlers
+        get(): MutableList<ClientHandler> {
+            return handlers
+        }
 
     override fun run() {
         try {
